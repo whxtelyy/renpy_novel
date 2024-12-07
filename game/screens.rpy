@@ -221,8 +221,33 @@ style choice_vbox:
     xalign 0.5
     ypos 405
     yanchor 0.5
-
     spacing gui.choice_spacing
+
+default choice_menu_type = ""
+screen choice(items):
+    style_prefix "choice"
+
+    if choice_menu_type == "scroll":
+        hbox:
+            spacing 10
+            align (0.5, 0.05)
+
+            viewport id "choice_vp":
+                draggable True
+                mousewheel True
+                xmaximum 1200
+                ymaximum 750
+                xminimum 1200
+                yminimum 400
+                vbox:
+                    spacing 5
+                    for i in items:
+                        textbutton i.caption action i.action
+            vbar value YScrollValue("choice_vp") xmaximum 15 ymaximum 750
+    else:
+        vbox:
+            for i in items:
+                textbutton i.caption action i.action
 
 style choice_button is default:
     properties gui.button_properties("choice_button")

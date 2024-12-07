@@ -1,5 +1,5 @@
 ﻿label start:
-    call intro
+    # call intro
     call begin
     
     call arrival
