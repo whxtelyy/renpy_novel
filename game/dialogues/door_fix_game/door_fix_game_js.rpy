@@ -1,33 +1,34 @@
 label door_fix_game_js:
-    menu:
-        "Выберите способ назначения события на дверь:"
-        
-        # Верный
-        'document.querySelector(".door").addEventListener("click", openDoor);':
-            ba "Отлично! Ты использовал современный и удобный способ. Дверь теперь открывается по клику, всё работает как надо!"
-            sp "Согласен. Такой подход я готов поставить в пример остальным. Красота и логика в одном флаконе!"
-            $ js_state.set_completed()
-        
-        # Верный, но стилистически неверный
-        'document.querySelector(".door").onclick = openDoor;':
-            ba "Работает! Событие привязано, дверь открывается, и это главное!"
-            sp "Но записывать обработчик прямо в свойство элемента — это старый стиль. Мы ведь хотим, чтобы код выглядел современно и поддерживаемо."
-            call door_fix_game_js
-        
-        # Похожий на верный
-        'document.querySelector(".door").addEventListener("click", openDoor); openDoor();':
-            ba "Ты зачем сразу вызываешь функцию? Дверь открывается автоматически, даже без клика. Это явно не то, что нужно."
-            call door_fix_game_js
-        
-        # С явной ошибкой
-        'document.querySelector(".door").addEventListener("hover", openDoor);':
-            ba "Событие 'hover'? Ты хочешь, чтобы дверь открывалась, как только на неё посмотрят? Это же не автоматическая дверь в супермаркете!"
-            call door_fix_game_js
-        
-        # Абсурдный
-        'openDoor();':
-            ba "Ну ты просто вызвал функцию. Конечно, дверь открылась, но при чём тут событие? Ты забыл привязать функцию к клику."
-            sp "Это не решение, это обман! Вернись и сделай правильно."
-            call door_fix_game_js
+    "Выберите способ назначения события на дверь:"
+    call screen dfg_menu_scroll([
+        {
+            "caption": 'document.querySelector(".door").addEventListener("click", function () {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
+            "action": Return("first")
+        },
+        {
+            "caption": 'var door = document.querySelector(".door");\ndoor.onclick = function () {{\n  var isClosed = door.getAttribute("data-status") = = = "closed";\n  door.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
+            "action": Return("second")
+        },
+        {
+            "caption": 'document.querySelector(".door").addEventListener("click", () => {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
+            "action": Return("third")
+        },
+        {
+            "caption": 'document.querySelector(".door").onclick = function () {{\n  const isClosed = document.getAttribute("data-status") = = = "closed";\n  document.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
+            "action": Return("fourth")
+        },
+    ])
+
+    if result == "first":
+        "Этот вариант идеально подходит. Используется современный способ назначения событий через addEventListener, который позволяет гибко управлять обработчиками. class задаёт стиль двери, а data-status переключается при каждом клике."
+    elif result == "second":
+        "Этот вариант работает, но он устарел. Использование onclick ограничивает возможность добавления нескольких обработчиков на один элемент. Это может быть проблемой, если нам потребуется добавить новые функции, связанные с кликом."
+        call door_fix_game_js
+    elif result == "third":
+        "Вместо обычной функции используется стрелочная. Проблема в том, что стрелочная функция не имеет собственного контекста this. В данном случае this не будет ссылаться на .door, что приведёт к ошибке. Это частая ошибка новичков, так как синтаксис стрелочной функции выглядит компактно, но работает по-другому."
+        call door_fix_game_js
+    elif result == "fourth":
+        "Вместо изменения атрибута у элемента .door, здесь используется document. Это приводит к тому, что код пытается менять атрибуты у всего документа, а не у конкретной двери. Такой подход полностью некорректен и вызовет ошибку."
+        call door_fix_game_js
 
     return

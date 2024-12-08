@@ -7,7 +7,6 @@ default description = "Первым делом нужно создать эле�
 label door_fix_game(description = description):
     menu:      
         "[description]"
-
         # HTML
         "[html_state.get_title()]":
             if is_show_complated(html_state):
@@ -33,6 +32,7 @@ label door_fix_game(description = description):
             if css_state.is_accessible(completed_games):
                 "CSS нужен для стилизации, анимации и эффектов. Сейчас нам предстоит отобразить нашу дверь и задать анимацию при её открытии."
                 call door_fix_game_css
+                $ css_state.set_completed()
                 $ completed_games.append(css_state.name)
                 call door_fix_game("Хорошо, стиль готов. Теперь двигаемся дальше. Пусть эта дверь ещё и заработает как надо.")
             else:
@@ -49,6 +49,7 @@ label door_fix_game(description = description):
             if js_state.is_accessible(completed_games):
                 "JavaScript (JS) нужен, чтобы оживить элементы, добавив им функционал. В нашем случае сделать так, чтобы дверь могла открываться при нажатии."
                 call door_fix_game_js
+                $ js_state.set_completed()
                 $ completed_games.append(js_state.name)
                 return
             else:

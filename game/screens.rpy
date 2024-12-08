@@ -223,38 +223,80 @@ style choice_vbox:
     yanchor 0.5
     spacing gui.choice_spacing
 
-default choice_menu_type = ""
 screen choice(items):
     style_prefix "choice"
-
-    if choice_menu_type == "scroll":
-        hbox:
-            spacing 10
-            align (0.5, 0.05)
-
-            viewport id "choice_vp":
-                draggable True
-                mousewheel True
-                xmaximum 1200
-                ymaximum 750
-                xminimum 1200
-                yminimum 400
-                vbox:
-                    spacing 5
-                    for i in items:
-                        textbutton i.caption action i.action
-            vbar value YScrollValue("choice_vp") xmaximum 15 ymaximum 750
-    else:
-        vbox:
-            for i in items:
-                textbutton i.caption action i.action
-
+    vbox:
+        for i in items:
+            textbutton i.caption action i.action
 style choice_button is default:
     properties gui.button_properties("choice_button")
-
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
+# dfg_menu
+define gui.dfg_button_width = 1200
+define gui.dfg_button_height = None
+define gui.dfg_button_tile = False
+define gui.dfg_button_text_font = "JetBrainsMono.ttf"
+define gui.dfg_button_text_size = 22
+define gui.dfg_button_text_xalign = 0.5
+define gui.dfg_button_text_idle_color = '#b4b4b4'
+define gui.dfg_button_text_hover_color = gui.hover_color
+define gui.dfg_button_text_outlines = [ (absolute(1), "#000", absolute(0), absolute(0)) ]
+screen dfg_menu(choices):
+    style_prefix "dfg"
+    hbox:
+        align (0.5, 0.5)
+        xmaximum 1200
+        ymaximum 320
+        vbox:
+            spacing 8
+            for choice in choices:
+                textbutton choice["caption"] action choice["action"]:
+                    background Frame("gui/textbox.png")
+                    xpadding 25
+                    ypadding 20
+style dfg_button is default:
+    properties gui.button_properties("dfg_button")
+style dfg_button_text is default:
+    properties gui.text_properties("dfg_button")
+    yalign 0.5
+
+define gui.dfg_scroll_button_width = 1200
+define gui.dfg_scroll_button_height = None
+define gui.dfg_scroll_button_tile = False
+define gui.dfg_scroll_button_text_font = "JetBrainsMono.ttf"
+define gui.dfg_scroll_button_text_size = 22
+define gui.dfg_scroll_button_text_idle_color = '#b4b4b4'
+define gui.dfg_scroll_button_text_hover_color = gui.hover_color
+define gui.dfg_scroll_button_text_outlines = [ (absolute(2), "#000", absolute(0), absolute(0)) ]
+screen dfg_menu_scroll(choices):
+    style_prefix "dfg_scroll"
+    hbox:
+        align (0.65, 0.5)
+        xsize 900
+        ysize 600
+        spacing 20
+        viewport id "dfg_scroll_viewport":
+            draggable True
+            mousewheel True
+            vbox:
+                spacing 8
+                for choice in choices:
+                    textbutton choice["caption"] action choice["action"]:
+                        background Frame("gui/textbox.png")
+                        xpadding 25
+                        ypadding 20
+        vbar:
+            value YScrollValue("dfg_scroll_viewport")
+            xsize 15
+            ysize 600
+style dfg_scroll_button is default:
+    properties gui.button_properties("dfg_scroll_button")
+    xsize 900
+style dfg_scroll_button_text is default:
+    properties gui.text_properties("dfg_scroll_button")
+    yalign 0.5
 
 ## Экран быстрого меню #########################################################
 ##
