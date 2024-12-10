@@ -1,24 +1,25 @@
 label door_fix_game_html:
-    "Выберите код для создания двери в HTML. В дальнейшем мы будем стилизовать дверь и делать возможным её открывать."
-    
-    call screen dfg_menu([
-        {
-            "caption": '<div class="door" data-openable="true" data-status="closed"></div>',
-            "action": Return("first")
-        },
-        {
-            "caption": '<div id="door" class="door"></div>',
-            "action": Return("second")
-        },
-        {
-            "caption": '<door data-status="closed"></door>',
-            "action": Return("third")
-        },
-        {
-            "caption": 'div.door(data-openable="true", data-status="closed")',
-            "action": Return("fourth")
-        },
-    ])
+    call screen dfg_menu({
+        "title": "Выберите код для создания двери в HTML. В дальнейшем мы будем стилизовать дверь и делать возможным её открывать.",
+        "menu": [
+            {
+                "caption": '<div class="door" data-openable="true" data-status="closed"></div>',
+                "action": Return("first")
+            },
+            {
+                "caption": '<div id="door" class="door"></div>',
+                "action": Return("second")
+            },
+            {
+                "caption": '<door data-openable="true" data-status="closed"></door>',
+                "action": Return("third")
+            },
+            {
+                "caption": 'div.door(data-openable="true", data-status="closed")',
+                "action": Return("fourth")
+            },
+        ]
+    })
     $ result = _return
     
     if result == "first":

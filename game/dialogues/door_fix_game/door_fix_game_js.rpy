@@ -1,23 +1,25 @@
 label door_fix_game_js:
-    "Выберите способ назначения события на дверь:"
-    call screen dfg_menu_scroll([
-        {
-            "caption": 'document.querySelector(".door").addEventListener("click", function () {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
-            "action": Return("first")
-        },
-        {
-            "caption": 'var door = document.querySelector(".door");\ndoor.onclick = function () {{\n  var isClosed = door.getAttribute("data-status") = = = "closed";\n  door.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
-            "action": Return("second")
-        },
-        {
-            "caption": 'document.querySelector(".door").addEventListener("click", () => {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
-            "action": Return("third")
-        },
-        {
-            "caption": 'document.querySelector(".door").onclick = function () {{\n  const isClosed = document.getAttribute("data-status") = = = "closed";\n  document.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
-            "action": Return("fourth")
-        },
-    ])
+    call screen dfg_menu_scroll({
+        "title": "Выберите способ назначения события на дверь:",
+        "menu": [
+            {
+                "caption": 'document.querySelector(".door").addEventListener("click", function () {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
+                "action": Return("first")
+            },
+            {
+                "caption": 'var door = document.querySelector(".door");\ndoor.onclick = function () {{\n  var isClosed = door.getAttribute("data-status") = = = "closed";\n  door.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
+                "action": Return("second")
+            },
+            {
+                "caption": 'document.querySelector(".door").addEventListener("click", () => {{\n  const isClosed = this.getAttribute("data-status") = = = "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
+                "action": Return("third")
+            },
+            {
+                "caption": 'document.querySelector(".door").onclick = function () {{\n  const isClosed = document.getAttribute("data-status") = = = "closed";\n  document.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
+                "action": Return("fourth")
+            },
+        ]
+    })
 
     if result == "first":
         "Этот вариант идеально подходит. Используется современный способ назначения событий через addEventListener, который позволяет гибко управлять обработчиками. class задаёт стиль двери, а data-status переключается при каждом клике."
