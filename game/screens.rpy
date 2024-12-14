@@ -435,7 +435,7 @@ screen main_menu():
     ## заменять этот.
     tag menu
 
-    add gui.main_menu_background
+    image gui.main_menu_background
 
     ## Эта пустая рамка затеняет главное меню.
     frame:
