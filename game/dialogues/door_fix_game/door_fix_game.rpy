@@ -5,7 +5,8 @@ default completed_games = []
 
 default description = "Первым делом нужно создать элемент двери. Выбери с помощью чего мы будет это делать."
 label door_fix_game(description = description):
-    menu:      
+    menu:
+        with Dissolve(0.25)
         "[description]"
         # HTML
         "[html_state.get_title(completed_games)]":
@@ -56,5 +57,4 @@ label door_fix_game(description = description):
                 "JavaScript нужен, чтобы оживить элементы, добавив им функциональность. Но сначала создай основу с помощью HTML и придай ей стиль с помощью CSS, чтобы было чему добавлять функционал."
                 $ js_state.set_watched()
                 call door_fix_game
-
     return
