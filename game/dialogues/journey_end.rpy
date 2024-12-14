@@ -1,7 +1,7 @@
 label journey_end:
     scene radik with fade
     show bagio at bagio_dynamic with moveintop
-    show spaghettinio at dynamic_spag with moveinright
+    show spaghettinio at spagetinio_dynamic with moveinright
     em "Фух, наконец-то! Дверь есть, она работает и выглядит как надо."
     
     show bagio happy with dissolve
