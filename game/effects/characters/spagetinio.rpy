@@ -1,17 +1,22 @@
 transform spaghettinio(base, blink, jump):
-    base
-    align (0.99, 0.95)
+    parallel:
+        character_blink(base, blink)
     parallel:
         spagetinio_jump(base, jump)
     parallel:
         spagetinio_xzoom
-    parallel:
-        character_blink(base, blink)
+# at
+transform spagetinio_show():
+    align (0.99, 0.95)
+    offset (1000, 0)
+    easeout 1.5:
+        offset (0, 0)
+    pause 0.1
 # animations
 transform spagetinio_jump(base, jump):
     renpy.random.randint(8, 20)
     jump
-    easein 0.30 yoffset -200
+    easein 0.30 yoffset -300
     easeout 0.30 yoffset 0
     base
     repeat
@@ -22,10 +27,3 @@ transform spagetinio_xzoom():
     choice:
         linear 0.001 xzoom -1
     repeat
-# at
-transform spagetinio_show():
-    align (1.25, 1.5)
-    easeout 1.0:
-        align (0.99, 0.95)
-    pause 0.1
-    

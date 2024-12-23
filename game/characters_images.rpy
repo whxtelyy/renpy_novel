@@ -1,21 +1,21 @@
 # emrach
-image emrach = character_blink(
+image emrach = emrach(
     "/characters/emrach/emrach.png",
     "/characters/emrach/emrach_blink.png",
 )
-image emrach happy = character_blink(
+image emrach happy = emrach(
     "/characters/emrach/emrach_happy.png",
     "/characters/emrach/emrach_happy_blink.png",
 )
-image emrach sad = character_blink(
+image emrach sad = emrach(
     "/characters/emrach/emrach_sad.png",
     "/characters/emrach/emrach_sad_blink.png",
 )
-image emrach scared = character_blink(
+image emrach scared = emrach(
     "/characters/emrach/emrach_scared.png",
     "/characters/emrach/emrach_scared_blink.png",
 )
-image emrach surprised = character_blink(
+image emrach surprised = emrach(
     "/characters/emrach/emrach_surprised.png",
     "/characters/emrach/emrach_surprised_blink.png",
 )
@@ -66,15 +66,15 @@ image spaghettinio thinking = spaghettinio(
 )
 
 # sergey
-image sergey = character_blink(
+image sergey = sergey(
     "/characters/sergey/sergey.png",
     "/characters/sergey/sergey_blink.png",
 )
-image sergey angry = character_blink(
+image sergey angry = sergey(
     "/characters/sergey/sergey_angry.png",
     "/characters/sergey/sergey_angry_blink.png",
 )
-image sergey happy = character_blink(
+image sergey happy = sergey(
     "/characters/sergey/sergey_happy.png",
     "/characters/sergey/sergey_happy_blink.png",
 )
