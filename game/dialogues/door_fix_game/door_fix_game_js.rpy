@@ -3,12 +3,12 @@ label door_fix_game_js:
         "title": "Определите, как назначить событие на дверь, чтобы при клике она открывалась и закрывалась.",
         "menu": [
             {
-                "caption": 'document.querySelector(".door").addEventListener("click", function () {{\n  const isClosed = this.getAttribute("data-status") === "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
-                "action": Return("first")
-            },
-            {
                 "caption": 'var door = document.querySelector(".door");\ndoor.onclick = function () {{\n  var isClosed = door.getAttribute("data-status") === "closed";\n  door.setAttribute("data-status", isClosed ? "open" : "closed");\n};',
                 "action": Return("second")
+            },
+            {
+                "caption": 'document.querySelector(".door").addEventListener("click", function () {{\n  const isClosed = this.getAttribute("data-status") === "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
+                "action": Return("valid")
             },
             {
                 "caption": 'document.querySelector(".door").addEventListener("click", () => {{\n  const isClosed = this.getAttribute("data-status") === "closed";\n  this.setAttribute("data-status", isClosed ? "open" : "closed");\n});',
@@ -22,7 +22,7 @@ label door_fix_game_js:
     })
     $ result = _return
 
-    if result == "first":
+    if result == "valid":
         "Отлично! Тут мы используем правильный метод {i}addEventListener{/i}, удобный селектор {i}.door{/i} и обычную функцию, чтобы {i}this{/i} указывал на дверь."
     elif result == "second":
         "Этот код работает, но использует устаревший способ {i}onclick{/i}. Если нам нужно будет добавить ещё события, будет сложнее."

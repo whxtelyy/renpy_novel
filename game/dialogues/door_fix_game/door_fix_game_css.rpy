@@ -3,16 +3,16 @@ label door_fix_game_css:
         "title": "Выберите стили для двери в закрытом состоянии. В дальнейшем мы добавим её открытие.",
         "menu": [
             {
+                "caption": 'door {{\n  width: 100px;\n  height: 200px;\n  background-image: url("door-closed.png");\n  background-size: cover;\n  transform-origin: left bottom;\n  transition: transform 0.5s ease;\n}',
+                "action": Return("third")
+            },
+            {
                 "caption": '.door {{\n  width: 100px;\n  height: 200px;\n  background-image: url("door-closed.png");\n  background-size: cover;\n  transform-origin: left;\n  transition: transform 0.5s ease, background-image 0.5s ease;\n}',
-                "action": Return("first")
+                "action": Return("valid")
             },
             {
                 "caption": '.door {{\n  width: 100px;\n  height: 200px;\n  background-image: url("door-closed.png");\n  background-size: contain;\n  transform-origin: left;\n  transition: transform 0.5s ease;\n}',
                 "action": Return("second")
-            },
-            {
-                "caption": 'door {{\n  width: 100px;\n  height: 200px;\n  background-image: url("door-closed.png");\n  background-size: cover;\n  transform-origin: left bottom;\n  transition: transform 0.5s ease;\n}',
-                "action": Return("third")
             },
             {
                 "caption": '.door {{\n  width: 100px;\n  height: 200px;\n  background-image: url("door-closed.png");\n  background-size: cover;\n  transform-origin: left;\n  transition: transform 2s linear;\n}',
@@ -22,7 +22,7 @@ label door_fix_game_css:
     })
     $ result = _return
 
-    if result == "first":
+    if result == "valid":
         "Отлично! Все параметры выглядят уместно: корректный фон, точка поворота и плавная анимация."
         call door_fix_game_css_continue
     elif result == "second":
@@ -43,10 +43,6 @@ label door_fix_game_css_continue:
         "title": "Теперь настройте стили для двери в открытом состоянии, учитывая предыдущие параметры.",
         "menu": [
             {
-                "caption": '.door[[data-status="open"] {{\n  transform: rotateY(90deg);\n  background-image: url("door-open.png");\n}',
-                "action": Return("first")
-            },
-            {
                 "caption": '.door[[data-status="open"] {{\n  transform: rotateY(90deg);\n  background: url("door-open.png") center/cover;\n}',
                 "action": Return("second")
             },
@@ -58,12 +54,16 @@ label door_fix_game_css_continue:
                 "caption": '.door[[data-status="open"] {{\n  transform: rotateY(90deg);\n  background-image: url("door_opened.png");\n}',
                 "action": Return("fourth")
             },
+            {
+                "caption": '.door[[data-status="open"] {{\n  transform: rotateY(90deg);\n  background-image: url("door-open.png");\n}',
+                "action": Return("valid")
+            },
         ]
     })
 
     $ result = _return
 
-    if result == "first":
+    if result == "valid":
         "Превосходно! Дверь поворачивается ровно на 90°, а фон меняется на корректное изображение."
     elif result == "second":
         "Неплохо, но при масштабировании окна фон может отображаться непредсказуемо."

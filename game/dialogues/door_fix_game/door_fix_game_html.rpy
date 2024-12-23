@@ -3,12 +3,12 @@ label door_fix_game_html:
         "title": "Выберите код для создания двери в HTML. В дальнейшем мы будем стилизовать дверь и делать возможным её открывать.",
         "menu": [
             {
-                "caption": '<div class="door" data-openable="true" data-status="closed"></div>',
-                "action": Return("first")
-            },
-            {
                 "caption": '<div id="door" class="door"></div>',
                 "action": Return("second")
+            },
+            {
+                "caption": '<div class="door" data-openable="true" data-status="closed"></div>',
+                "action": Return("valid")
             },
             {
                 "caption": '<door data-openable="true" data-status="closed"></door>',
@@ -22,7 +22,7 @@ label door_fix_game_html:
     })
     $ result = _return
     
-    if result == "first":
+    if result == "valid":
         "{i}class{/i} задаёт стиль двери, {i}data-openable{/i} определяет возможность открытия, а {i}data-status{/i} показывает текущее состояние.
         Это верный вариант, он позволяет создавать любое количество дверей с нужным нам функционалом."
     elif result == "second":
