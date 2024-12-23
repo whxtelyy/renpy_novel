@@ -1,28 +1,32 @@
-transform bagio_dynamic:
+transform bagio(base, blink):
+    parallel:
+        character_blink(base, blink)
+# animation
+transform bagio_fly:
+    easeout 1.25:
+        offset(-30, 82.5)
+        rotate 0
     parallel:
         ease 4:
-            xoffset -30
-            rotate -2
-        ease 4:
-            xoffset 30
+            xoffset 0
             rotate 2
+        ease 4:
+            xoffset -60
+            rotate -2
         repeat
     parallel:
-        ease 3.5 yoffset 15
-        ease 3.5 yoffset -15
+        ease 3.5 yoffset 90
+        ease 3.5 yoffset 75
         repeat
-transform bagio_dynamic_show:
-    xalign -0.15 yalign -0.5
-    zoom 0.1
-    alpha 0.0
-    rotate -105
+# at
+transform bagio_show:
+    offset(-650, -750)
+    zoom 0.0
+    rotate -100
+    easeout 1.5:
+        offset(125, 250)
+        zoom 1.0
+        rotate -10
+    pause 1
+    bagio_fly
 
-    parallel:
-        easeout 1.5:
-            align (0.0, 0.25)
-            offset (150, 150)
-            zoom 1.0
-            alpha 1.0
-            rotate -15
-    pause 0.75
-    bagio_dynamic
