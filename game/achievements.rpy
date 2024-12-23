@@ -109,7 +109,7 @@ define good_ending = Achievement(
 define bad_ending = Achievement(
     name=_("Плохая концовка"),
     id="bad_ending",
-    description=_("Сбегите из мира проекта."),
+    description=_("You're Fired!."),
     unlocked_image="gui/bad_ending.png",
     hide_description=True,
 )

@@ -4,10 +4,11 @@ label arrival:
     play music "audio/project_world_music.mp3" volume 1 fadein 0.75
     em "Аааа... Что? Где я? Что это за место?!"
 
-    play sound "audio/baggio_back.mp3" volume 0.1
     $ baName = "Неизвестный 1"
     show bagio at bagio_show
-    pause 1.0
+    pause 0.6
+    play sound "audio/baggio_back.mp3" volume 0.09
+    pause 0.4
     $ spName = "Неизвестный 2"
     show spaghettinio at spagetinio_show
     with moveinright
