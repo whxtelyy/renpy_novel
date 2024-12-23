@@ -330,14 +330,14 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Назад") action Rollback()
-            textbutton _("История") action ShowMenu('history')
-            textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Авто") action Preference("auto-forward", "toggle")
-            textbutton _("Сохранить") action ShowMenu('save')
-            textbutton _("Б.Сохр") action QuickSave()
-            textbutton _("Б.Загр") action QuickLoad()
-            textbutton _("Опции") action ShowMenu('preferences')
+            textbutton _("Назад") action [Play ("sound", "audio/interface_sound.mp3"), Rollback()] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("История") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu('history')] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("Пропуск") action [Play ("sound", "audio/interface_sound.mp3"), Skip()] hovered Play("sound", "audio/interface_sound.mp3") alternate Skip(fast=True, confirm=True)
+            textbutton _("Авто") action [Play ("sound", "audio/interface_sound.mp3"), Preference("auto-forward", "toggle")] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("Сохранить") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu('save')] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("Б.Сохр") action [Play ("sound", "audio/interface_sound.mp3"), QuickSave()] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("Б.Загр") action [Play ("sound", "audio/interface_sound.mp3"), QuickLoad()] hovered Play("sound", "audio/interface_sound.mp3")
+            textbutton _("Опции") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu('preferences')] hovered Play("sound", "audio/interface_sound.mp3")
 
 
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
@@ -373,43 +373,41 @@ screen navigation():
 
         xpos gui.navigation_xpos
         yalign 0.5
+        xoffset -20
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("Начать") action Start()
+            textbutton _("Начать") action [Play ("sound", "audio/interface_sound.mp3"), Start()] hovered Play("sound", "audio/interface_sound.mp3")
 
         else:
 
-            textbutton _("История") action ShowMenu("history")
+            textbutton _("История") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("history")] hovered Play("sound", "audio/interface_sound.mp3")
 
-            textbutton _("Сохранить") action ShowMenu("save")
+            textbutton _("Сохранить") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("save")] hovered Play("sound", "audio/interface_sound.mp3")
 
-        textbutton _("Загрузить") action ShowMenu("load")
+        textbutton _("Загрузить") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("load")] hovered Play("sound", "audio/interface_sound.mp3")
 
-        textbutton _("Настройки") action ShowMenu("preferences")
+        textbutton _("Достижения") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("achievement_gallery")] hovered Play("sound", "audio/interface_sound.mp3")
+
+        textbutton _("Настройки") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("preferences")] hovered Play("sound", "audio/interface_sound.mp3")
 
         if _in_replay:
 
-            textbutton _("Завершить повтор") action EndReplay(confirm=True)
+            textbutton _("Завершить повтор") action [Play ("sound", "audio/interface_sound.mp3"), EndReplay(confirm=True)] hovered Play("sound", "audio/interface_sound.mp3")
 
         elif not main_menu:
 
-            textbutton _("Главное меню") action MainMenu()
+            textbutton _("Главное меню") action [Play ("sound", "audio/interface_sound.mp3"), MainMenu()] hovered Play("sound", "audio/interface_sound.mp3")
 
-        textbutton _("Об игре") action ShowMenu("about")
-
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Помощь не необходима и не относится к мобильным устройствам.
-            textbutton _("Помощь") action ShowMenu("help")
+        textbutton _("Об игре") action [Play ("sound", "audio/interface_sound.mp3"), ShowMenu("about")] hovered Play("sound", "audio/interface_sound.mp3")
 
         if renpy.variant("pc"):
 
             ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
             ## версии.
-            textbutton _("Выход") action Quit(confirm=not main_menu)
+            textbutton _("Выход") action [Play ("sound", "audio/interface_sound.mp3"), Quit(confirm=not main_menu)] hovered Play("sound", "audio/interface_sound.mp3") 
 
 
 style navigation_button is gui_button
@@ -558,7 +556,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     textbutton _("Вернуться"):
         style "return_button"
 
-        action Return()
+        action [Play ("sound", "audio/interface_sound.mp3"), Return()] hovered Play("sound", "audio/interface_sound.mp3") 
 
     label title
 
@@ -696,7 +694,7 @@ screen file_slots(title):
 
                 key_events True
                 xalign 0.5
-                action page_name_value.Toggle()
+                action [Play ("sound", "audio/interface_sound.mp3"), page_name_value.Toggle()] hovered Play("sound", "audio/interface_sound.mp3")
 
                 input:
                     style "page_label_text"
@@ -716,7 +714,7 @@ screen file_slots(title):
                     $ slot = i + 1
 
                     button:
-                        action FileAction(slot)
+                        action [Play ("sound", "audio/interface_sound.mp3"), FileAction(slot)] hovered Play("sound", "audio/interface_sound.mp3")
 
                         has vbox
 
@@ -742,30 +740,30 @@ screen file_slots(title):
 
                     spacing gui.page_spacing
 
-                    textbutton _("<") action FilePagePrevious()
+                    textbutton _("<") action [Play ("sound", "audio/interface_sound.mp3"), FilePagePrevious()] hovered Play("sound", "audio/interface_sound.mp3")
                     key "save_page_prev" action FilePagePrevious()
 
                     if config.has_autosave:
-                        textbutton _("{#auto_page}А") action FilePage("auto")
+                        textbutton _("{#auto_page}А") action [Play ("sound", "audio/interface_sound.mp3"), FilePage("auto")] hovered Play("sound", "audio/interface_sound.mp3")
 
                     if config.has_quicksave:
-                        textbutton _("{#quick_page}Б") action FilePage("quick")
+                        textbutton _("{#quick_page}Б") action [Play ("sound", "audio/interface_sound.mp3"), FilePage("quick")] hovered Play("sound", "audio/interface_sound.mp3")
 
                     ## range(1, 10) задаёт диапазон значений от 1 до 9.
                     for page in range(1, 10):
-                        textbutton "[page]" action FilePage(page)
+                        textbutton "[page]" action [Play ("sound", "audio/interface_sound.mp3"), FilePage(page)] hovered Play("sound", "audio/interface_sound.mp3")
 
-                    textbutton _(">") action FilePageNext()
+                    textbutton _(">") action [Play ("sound", "audio/interface_sound.mp3"), FilePageNext()] hovered Play("sound", "audio/interface_sound.mp3")
                     key "save_page_next" action FilePageNext()
 
                 if config.has_sync:
                     if CurrentScreenName() == "save":
                         textbutton _("Загрузить Sync"):
-                            action UploadSync()
+                            action [Play ("sound", "audio/interface_sound.mp3"), UploadSync()] hovered Play("sound", "audio/interface_sound.mp3") 
                             xalign 0.5
                     else:
                         textbutton _("Скачать Sync"):
-                            action DownloadSync()
+                            action [Play ("sound", "audio/interface_sound.mp3"), DownloadSync()] hovered Play("sound", "audio/interface_sound.mp3") 
                             xalign 0.5
 
 
@@ -823,15 +821,14 @@ screen preferences():
                     vbox:
                         style_prefix "radio"
                         label _("Режим экрана")
-                        textbutton _("Оконный") action Preference("display", "window")
-                        textbutton _("Полный") action Preference("display", "fullscreen")
-
+                        textbutton _("Оконный") action [Play ("sound", "audio/interface_sound.mp3"), Preference("display", "window")] hovered Play("sound", "audio/interface_sound.mp3")  
+                        textbutton _("Полный") action [Play ("sound", "audio/interface_sound.mp3"), Preference("display", "fullscreen")] hovered Play("sound", "audio/interface_sound.mp3") 
                 vbox:
                     style_prefix "check"
                     label _("Пропуск")
-                    textbutton _("Всего текста") action Preference("skip", "toggle")
-                    textbutton _("После выборов") action Preference("after choices", "toggle")
-                    textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
+                    textbutton _("Всего текста") action [Play ("sound", "audio/interface_sound.mp3"), Preference("skip", "toggle")] hovered Play("sound", "audio/interface_sound.mp3") 
+                    textbutton _("После выборов") action [Play ("sound", "audio/interface_sound.mp3"), Preference("after choices", "toggle")] hovered Play("sound", "audio/interface_sound.mp3")
+                    textbutton _("Переходов") action [Play ("sound", "audio/interface_sound.mp3"), InvertSelected(Preference("transitions", "toggle"))] hovered Play("sound", "audio/interface_sound.mp3")
 
                 ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
                 ## могут быть добавлены сюда для добавления новых настроек.
@@ -884,7 +881,7 @@ screen preferences():
                         null height gui.pref_spacing
 
                         textbutton _("Без звука"):
-                            action Preference("all mute", "toggle")
+                            action [Play ("sound", "audio/interface_sound.mp3"), Preference("all mute", "toggle")] hovered Play("sound", "audio/interface_sound.mp3")
                             style "mute_all_button"
 
 
@@ -1056,161 +1053,6 @@ style history_label_text:
 ## (keyboard_help, mouse_help, и gamepad_help), чтобы показывать актуальную
 ## помощь.
 
-screen help():
-
-    tag menu
-
-    default device = "keyboard"
-
-    use game_menu(_("Помощь"), scroll="viewport"):
-
-        style_prefix "help"
-
-        vbox:
-            spacing 23
-
-            hbox:
-
-                textbutton _("Клавиатура") action SetScreenVariable("device", "keyboard")
-                textbutton _("Мышь") action SetScreenVariable("device", "mouse")
-
-                if GamepadExists():
-                    textbutton _("Геймпад") action SetScreenVariable("device", "gamepad")
-
-            if device == "keyboard":
-                use keyboard_help
-            elif device == "mouse":
-                use mouse_help
-            elif device == "gamepad":
-                use gamepad_help
-
-
-screen keyboard_help():
-
-    hbox:
-        label _("Enter")
-        text _("Прохождение диалогов, активация интерфейса.")
-
-    hbox:
-        label _("Пробел")
-        text _("Прохождение диалогов без возможности делать выбор.")
-
-    hbox:
-        label _("Стрелки")
-        text _("Навигация по интерфейсу.")
-
-    hbox:
-        label _("Esc")
-        text _("Вход в игровое меню.")
-
-    hbox:
-        label _("Ctrl")
-        text _("Пропускает диалоги, пока зажат.")
-
-    hbox:
-        label _("Tab")
-        text _("Включает режим пропуска.")
-
-    hbox:
-        label _("Page Up")
-        text _("Откат назад по сюжету игры.")
-
-    hbox:
-        label _("Page Down")
-        text _("Откатывает предыдущее действие вперёд.")
-
-    hbox:
-        label "H"
-        text _("Скрывает интерфейс пользователя.")
-
-    hbox:
-        label "S"
-        text _("Делает снимок экрана.")
-
-    hbox:
-        label "V"
-        text _("Включает поддерживаемый {a=https://www.renpy.org/l/voicing}синтезатор речи{/a}.")
-
-    hbox:
-        label "Shift+A"
-        text _("Открывает меню специальных возможностей.")
-
-
-screen mouse_help():
-
-    hbox:
-        label _("Левый клик")
-        text _("Прохождение диалогов, активация интерфейса.")
-
-    hbox:
-        label _("Клик колёсиком")
-        text _("Скрывает интерфейс пользователя.")
-
-    hbox:
-        label _("Правый клик")
-        text _("Вход в игровое меню.")
-
-    hbox:
-        label _("Колёсико вверх")
-        text _("Откат назад по сюжету игры.")
-
-    hbox:
-        label _("Колёсико вниз")
-        text _("Откатывает предыдущее действие вперёд.")
-
-
-screen gamepad_help():
-
-    hbox:
-        label _("Правый триггер\nA/Нижняя кнопка")
-        text _("Прохождение диалогов, активация интерфейса.")
-
-    hbox:
-        label _("Левый Триггер\nЛевый Бампер")
-        text _("Откат назад по сюжету игры.")
-
-    hbox:
-        label _("Правый бампер")
-        text _("Откатывает предыдущее действие вперёд.")
-
-    hbox:
-        label _("Крестовина, Стики")
-        text _("Навигация по интерфейсу.")
-
-    hbox:
-        label _("Старт, Гид, B/Правая кнопка")
-        text _("Вход в игровое меню.")
-
-    hbox:
-        label _("Y/Верхняя кнопка")
-        text _("Скрывает интерфейс пользователя.")
-
-    textbutton _("Калибровка") action GamepadCalibrate()
-
-
-style help_button is gui_button
-style help_button_text is gui_button_text
-style help_label is gui_label
-style help_label_text is gui_label_text
-style help_text is gui_text
-
-style help_button:
-    properties gui.button_properties("help_button")
-    xmargin 12
-
-style help_button_text:
-    properties gui.text_properties("help_button")
-
-style help_label:
-    xsize 375
-    right_padding 30
-
-style help_label_text:
-    size gui.text_size
-    xalign 1.0
-    textalign 1.0
-
-
 
 ################################################################################
 ## Дополнительные экраны
@@ -1250,8 +1092,8 @@ screen confirm(message, yes_action, no_action):
                 xalign 0.5
                 spacing 150
 
-                textbutton _("Да") action yes_action
-                textbutton _("Нет") action no_action
+                textbutton _("Да") action [Play ("sound", "audio/interface_sound.mp3"), yes_action] hovered Play("sound", "audio/interface_sound.mp3")
+                textbutton _("Нет") action [Play ("sound", "audio/interface_sound.mp3"), no_action] hovered Play("sound", "audio/interface_sound.mp3")
 
     ## Правый клик и esc, как ответ "Нет".
     key "game_menu" action no_action
