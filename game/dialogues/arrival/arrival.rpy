@@ -4,10 +4,11 @@ label arrival:
     play music "audio/project_world_music.mp3" volume 1 fadein 0.75
     em "Аааа... Что? Где я? Что это за место?!"
 
-    play sound "audio/baggio_back.mp3" volume 0.1
-    show bagio at bagio_show
-    pause 1.0
-    show spaghettinio at spagetinio_show
+    show bagio at bagio_dynamic_show
+    pause 0.6
+    play sound "audio/baggio_back.mp3" volume 0.09
+    pause 0.4
+    show spaghettinio at spagetinio_dynamic_show
     with moveinright
     pause 0.5
 
@@ -16,7 +17,7 @@ label arrival:
 
     show bagio happy with dissolve
     ba "Я? Я - твой личный баг-инспектор, готовый вынести тебе приговор."
-    sp "Ба, давай без сарказма. Эмрах, ты, вероятно, немного растерян, не так ли"
+    sp "Ба, давай без сарказма. Эмрах, ты, вероятно, немного растерян, не так ли?"
     em "Растерян? Да я вообще ничего не понимаю! Кто вы такие? Что это за место? Что за ужас тут творится?!"
     sp "Не волнуйся, сейчас всё объясню."
     sp "Меня зовут Спагеттиньо. Я борюсь за эстетику и порядок в коде. Уверен, что он должен быть не только рабочим, но и красивым. А это..."
@@ -38,7 +39,7 @@ label arrival:
     sp "Сначала ты должен найти её. Она связана с тобой и хочет, чтобы именно ты её исправил."
     em "Если я найду и исправлю эту ошибку, я смогу вернуться обратно?"
     
-    show spaghettinio thinking with dissolve
+    show spaghettinio thinspng with dissolve
     sp "Технически ты можешь уйти в любой момент, если этого захочешь. Но ты же сам понимаешь, что тебе нужно исправить ошибку, иначе проект будет провальным
     и ты распрощаешься со своей работой"
     show spaghettinio with dissolve

@@ -15,6 +15,7 @@ label arrival_go_escape:
     sg "Этого недостаточно! Я вынужден прекратить наше сотрудничество. Ты уволен!"
     hide sergey angry at left with moveoutleft
 
+    $ bad_ending.grant()
     em "Такого я точно не ожидал. Это провал... Похоже, что для меня настал конец..."
 
     return

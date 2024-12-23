@@ -1,4 +1,5 @@
 label arrival_go_vetrorosa:
+    $ curious.grant()
     em "Смотрите, там вдалеке какой-то огонёк... Он слишком странно... притягательный? Может, это то самое место?"
     show spaghettinio thinking with dissolve
     sp "Честно говоря, это выглядит не очень безопасно. Не думаю, что идти туда — хорошая идея."
@@ -13,11 +14,12 @@ label arrival_go_vetrorosa:
     em "Тихо, вы оба. Просто идём уже."
 
     scene lighthouse with dissolve
-    show bagio at bagio_fly with moveinleft
-    show spaghettinio with moveinright
+    show bagio at bagio_dynamic with moveinleft
+    show spaghettinio at spagetinio_dynamic with moveinright
     ba "Так, мы на месте. Что это за странное здание? Оно выглядит... жутковато."
     show spaghettinio scared with dissolve
     sp "Ребят, мне кажется, или это здание... живое?"
+    play sound "vetrorosa_started_talking.mp3" volume 0.125
     ve "Добро пожаловать, путники. Я — Ветророза, хранитель порядка и гармонии."
     ve "Ты... Избранный, тебя занесло сюда неслучайно. Вопросов много, но путь твой ещё не ясен."
     em "Путь? Не ясен? Мы ищем ошибку в проекте. Вы знаете что-нибудь о ней? Может быть, она здесь?"
@@ -48,8 +50,8 @@ label arrival_go_vetrorosa:
 
     scene radik with fade
     play sound "audio/radik_sounds.mp3" loop volume 0.1
-    show bagio at bagio_fly with moveintop
-    show spaghettinio with moveinright
+    show bagio at bagio_dynamic with moveintop
+    show spaghettinio at spagetinio_dynamic with moveinright
     ba "Так, мы на месте. И что? Просто какое-то здание. Где тут проблема?"
     show spaghettinio offended with dissolve
     sp "Баггио, ты серьёзно? Ты не видишь, что тут так-то дверь отсутствуешь? Хотя... не удивительно, это же ты."

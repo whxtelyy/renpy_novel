@@ -3,7 +3,7 @@ label begin:
     play music "audio/office_music.mp3" volume 0.1 fadein 0.5
 
     show emrach sad at center with dissolve
-    em "Начало рабочего дня. Надеялся, что свежая голова поможет, но нет."
+    em "Начало рабочего дня. Надеялся, что свежая голова поможет, но нет!"
     em "Дедлайн уже сегодня, а во фронтенде ошибка, которую я не могу найти уже три дня."
 
     play sound "door_knock_open.mp3" volume 0.3

@@ -33,8 +33,8 @@ init python:
         renpy.music.stop(channel='sound')
 
 label intro:
-    play audio "/audio/intro/intro_start.mp3"
-    pause 1.0
+    play audio "/audio/intro/intro_start.mp3" volume 0.8
+    pause 1
     stop audio fadeout 0.5
     play music "/audio/intro/intro_music.mp3" volume 0.3 fadein 1.0
     pause 2.0
