@@ -1,7 +1,7 @@
 label journey_end:
     scene radik
-    show bagio at bagio_fly
-    show spaghettinio
+    show bagio at bagio_dynamic
+    show spaghettinio at spagetinio_dynamic
     with Fade(0.5, 0.4, 0.75)
 
     em "Фух, наконец-то! Дверь есть, она работает и выглядит как надо."
@@ -33,6 +33,7 @@ label journey_end:
     em "Спасибо вам. Я уж думал, что не справлюсь. А теперь... теперь даже немного горжусь собой."
 
     ba "Удачи, Эмрах. Мы увидимся, даже если ты этого не заметишь."
+    play sound "audio/baggio_flying.mp3" volume 0.09
     hide bagio with moveouttop
 
     sp "И помни, в любом проекте главное — думать. Всё остальное приложится."
