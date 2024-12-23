@@ -241,7 +241,7 @@ define gui.dfg_button_text_font = "JetBrainsMono.ttf"
 define gui.dfg_button_text_size = 22
 define gui.dfg_button_text_xalign = 0.5
 define gui.dfg_button_text_idle_color = '#b4b4b4'
-define gui.dfg_button_text_hover_color = gui.hover_color
+define gui.dfg_button_text_hover_color = '#66c1e0'
 define gui.dfg_button_text_outlines = [ (absolute(1), "#000", absolute(0), absolute(0)) ]
 screen dfg_menu(params):
     style_prefix "dfg"
@@ -275,7 +275,7 @@ define gui.dfg_scroll_button_tile = False
 define gui.dfg_scroll_button_text_font = "JetBrainsMono.ttf"
 define gui.dfg_scroll_button_text_size = 22
 define gui.dfg_scroll_button_text_idle_color = '#b4b4b4'
-define gui.dfg_scroll_button_text_hover_color = gui.hover_color
+define gui.dfg_scroll_button_text_hover_color = '#66c1e0'
 define gui.dfg_scroll_button_text_outlines = [ (absolute(2), "#000", absolute(0), absolute(0)) ]
 screen dfg_menu_scroll(params):
     style_prefix "dfg_scroll"
