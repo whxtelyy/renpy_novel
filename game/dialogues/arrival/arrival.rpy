@@ -5,9 +5,9 @@ label arrival:
     em "Аааа... Что? Где я? Что это за место?!"
 
     play sound "audio/baggio_back.mp3" volume 0.1
-    show bagio at bagio_dynamic_show
+    show bagio at bagio_show
     pause 1.0
-    show spaghettinio at spagetinio_dynamic_show
+    show spaghettinio at spagetinio_show
     with moveinright
     pause 0.5
 

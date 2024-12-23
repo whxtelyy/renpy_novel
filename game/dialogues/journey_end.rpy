@@ -1,7 +1,7 @@
 label journey_end:
     scene radik
-    show bagio at bagio_dynamic
-    show spaghettinio at spagetinio_dynamic
+    show bagio at bagio_fly
+    show spaghettinio
     with Fade(0.5, 0.4, 0.75)
 
     em "Фух, наконец-то! Дверь есть, она работает и выглядит как надо."

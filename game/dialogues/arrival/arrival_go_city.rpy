@@ -5,8 +5,8 @@ label arrival_go_city:
     em "Ладно - в путь!"
 
     scene city
-    show bagio at bagio_dynamic
-    show spaghettinio at spagetinio_dynamic
+    show bagio at bagio_fly
+    show spaghettinio
     with Fade(0.5, 1, 0.75)
     
     sp "Вот он, город! Но где нам искать?"
@@ -19,7 +19,7 @@ label arrival_go_city:
     hide bagio with moveouttop 
     pause 2.5
     play sound "audio/baggio_back.mp3" volume 0.1
-    show bagio at bagio_dynamic with moveintop
+    show bagio at bagio_fly with moveintop
     pause 0.5
     em "Ну что, удалось что-то заметить?"
     ba "Осмотрелся. Ничего особо интересного вроде и нет. Спереди - длинная дорога, справа - дома, слева - да тоже дома, но..."
@@ -34,8 +34,8 @@ label arrival_go_city:
 
     scene radik
     play sound "audio/radik_sounds.mp3" loop volume 0.1
-    show bagio at bagio_dynamic
-    show spaghettinio at spagetinio_dynamic
+    show bagio at bagio_fly
+    show spaghettinio
     with Fade(0.5, 1, 0.75)
 
     ba "Вот оно. Здание, прям, как из былинных сказок - Дом без окон и дверей, да только окна есть."

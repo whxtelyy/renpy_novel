@@ -13,8 +13,8 @@ label arrival_go_vetrorosa:
     em "Тихо, вы оба. Просто идём уже."
 
     scene lighthouse with dissolve
-    show bagio at bagio_dynamic with moveinleft
-    show spaghettinio at spagetinio_dynamic with moveinright
+    show bagio at bagio_fly with moveinleft
+    show spaghettinio with moveinright
     ba "Так, мы на месте. Что это за странное здание? Оно выглядит... жутковато."
     show spaghettinio scared with dissolve
     sp "Ребят, мне кажется, или это здание... живое?"
@@ -48,8 +48,8 @@ label arrival_go_vetrorosa:
 
     scene radik with fade
     play sound "audio/radik_sounds.mp3" loop volume 0.1
-    show bagio at bagio_dynamic with moveintop
-    show spaghettinio at spagetinio_dynamic with moveinright
+    show bagio at bagio_fly with moveintop
+    show spaghettinio with moveinright
     ba "Так, мы на месте. И что? Просто какое-то здание. Где тут проблема?"
     show spaghettinio offended with dissolve
     sp "Баггио, ты серьёзно? Ты не видишь, что тут так-то дверь отсутствуешь? Хотя... не удивительно, это же ты."
