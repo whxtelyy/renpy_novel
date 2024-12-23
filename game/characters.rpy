@@ -5,10 +5,12 @@ define em = Character("Эмрах", color="#fff")
 define sg = Character("Сергей Геннадьевич", color="#fff")
 
 # spaghettinio
-define sp = Character("Спагеттиньо", color="#fff")
+default spName = "Спагеттиньо"
+define sp = Character("[spName]", color="#fff")
 
 # bagio
-define ba = Character("Баггио", color="#fff")
+default baName = "Баггио"
+define ba = Character("[baName]", color="#fff")
 
 # vetrorosa
 define ve = Character("Ветророза", color="#fff")
